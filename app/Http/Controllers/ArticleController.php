@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Article;
 
 class ArticleController extends Controller
 {
@@ -13,7 +14,9 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return view('articles.index');
+        $articles = Article::all();
+        // dd($articles);
+        return view('articles.index', compact('articles'));
     }
 
     /**
@@ -43,9 +46,13 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
+    // alla show devo passare lo slug perchè lo utilizzi
     {
-        //
+        // se non trova alcun articolo con quello slug restituisce 404
+        // con where effettuo la query proprio per richiamare l'articolo con quello slug
+        $articles = Article::where('slug', $slug)->firstOrFail();
+        return view('articles.show', compact('articles'));
     }
 
     /**
