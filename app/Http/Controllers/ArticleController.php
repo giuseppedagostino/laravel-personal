@@ -3,10 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Article;
 
 class ArticleController extends Controller
 {
+
+    // array di validazione
+    private $articleValidation = [
+        'title' => 'required|max:100',
+        'subtitle' => 'required|max:200',
+        'image' => 'required', // forse devo metterla nullable?
+        'author' => 'required|max:80',
+        'content' => 'required',
+        'publication_date' => 'required|date'
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +38,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('articles.create');
     }
 
     /**
@@ -37,7 +49,26 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        // dd($data);
+
+        // effettuo un controllo sui dati inseriti
+        $request->validate($this->articleValidation);
+
+        $newArticle = new Article();
+        $data['slug'] = Str::slug($request->title);
+        // associo i dati presi dal form alle chiavi del database
+        $newArticle->title = $data["title"];
+        $newArticle->slug = $data["slug"];
+        $newArticle->subtitle = $data["subtitle"];
+        $newArticle->image = $data["image"];
+        $newArticle->author = $data["author"];
+        $newArticle->content = $data["content"];
+        $newArticle->publication_date = $data["publication_date"];
+        // salvo il nuovo articolo
+        $postSaveResult = $newArticle->save();
+
+        return redirect()->route('articles.index')->with('message', 'Articolo aggiunto correttamente');
     }
 
     /**
