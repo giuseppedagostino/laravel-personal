@@ -15,44 +15,44 @@
 
   <div class="container my-4">
 
-    <form action="{{ route('articles.store') }}" method="POST">
+    <form action="{{ route('articles.update', $article->id) }}" method="POST">
       @csrf
-      @method('POST')
+      @method('PUT')
   
       {{-- TITOLO --}}
       <div class="form-group">
         <label for="title">Titolo</label>
-        <input type="text" class="form-control" id="title" value="{{ old('title') }}" name="title"  placeholder="Inserisci titolo">
+        <input type="text" class="form-control" id="title" value="{{ $article->title }}" name="title">
       </div>
   
       {{-- SOTTOTITOLO --}}
       <div class="form-group">
         <label for="subtitle">Sottotitolo</label>
-        <input type="text" class="form-control" id="subtitle" value="{{ old('subtitle') }}" name="subtitle"  placeholder="Inserisci sottotitolo">
+        <input type="text" class="form-control" id="subtitle" value="{{ $article->subtitle }}" name="subtitle">
       </div>
 
       {{-- IMMAGINE --}}
       <div class="form-group">
         <label for="image">Immagine</label>
-        <input type="text" class="form-control" id="image" value="{{ old('image') }}" name="image"  placeholder="Inserisci url immagine">
+        <input type="text" class="form-control" id="image" value="{{ $article->image }}" name="image">
       </div>
   
       {{-- AUTORE --}}
       <div class="form-group">
         <label for="author">Autore</label>
-        <input type="text" class="form-control" id="author" value="{{ old('author') }}" name="author"  placeholder="Inserisci autore">
+        <input type="text" class="form-control" id="author" value="{{ $article->author }}" name="author">
       </div>
   
       {{-- CONTENUTO --}}
       <div class="form-group">
         <label for="content">Contenuto</label>
-        <input type="text" class="form-control" id="content" value="{{ old('content') }}" name="content"  placeholder="Inserisci contenuto">
+        <input type="text" class="form-control" id="content" value="{{ $article->content }}" name="content">
       </div>
   
       {{-- DATA DI PUBBLICAZIONE --}}
       <div class="form-group">
         <label for="publication_date">Data di pubblicazione</label>
-        <input type="text" class="form-control" id="publication_date" value="{{ old('publication_date') }}" name="publication_date"  placeholder="Inserisci data di pubblicazione">
+        <input type="text" class="form-control" id="publication_date" value="{{ $article->publication_date }}" name="publication_date">
       </div>
       
       {{-- SALVA --}}

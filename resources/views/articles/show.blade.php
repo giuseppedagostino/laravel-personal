@@ -1,6 +1,7 @@
 @extends('layouts.layout')
 
 @section('main')
+<main>
 
   <div class="container my-4">
     <h2 class="display-4 text-center">{{ $articles->title}}</h2>
@@ -12,7 +13,9 @@
     <p class="mb-4"><strong>Data di pubblicazione: </strong>{{ $articles->publication_date }}</p>
     <hr>
 
-    <a href="{{ route('articles.index') }}" class="btn btn-primary">Torna alla home</a>
+    <a href="{{ route('articles.index') }}" class="btn btn-outline-primary">Torna alla home</a>
   </div>
+
+</main>
 @endsection
     
