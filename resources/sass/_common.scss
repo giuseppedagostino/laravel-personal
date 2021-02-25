@@ -1,0 +1,14 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  transition: 0.4s;
+  &:hover{
+    box-shadow: 0 0 60px rgba(0,0,0, 0.5);
+    transform: scale(1.025);
+  }
+}
+
