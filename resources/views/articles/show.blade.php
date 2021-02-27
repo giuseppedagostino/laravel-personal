@@ -13,6 +13,14 @@
     <p class="mb-4"><strong>Data di pubblicazione: </strong>{{ $articles->publication_date }}</p>
     <hr>
 
+    {{-- TAGS --}}
+    <div class="text-center">
+      @foreach ($articles->tags as $tag)
+        <span class="badge badge-info">{{ $tag->name }}</span>
+      @endforeach
+    </div>
+    {{-- /TAGS --}}
+
     <a href="{{ route('articles.index') }}" class="btn btn-outline-primary">Torna alla home</a>
   </div>
 

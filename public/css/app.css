@@ -14621,10 +14621,16 @@ h3 {
 
 .card {
   transition: 0.4s;
+  border-radius: 20px;
+  overflow: hidden;
 }
 .card:hover {
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.5);
   transform: scale(1.025);
+}
+
+.badge {
+  padding: 10px;
 }
 
 a {

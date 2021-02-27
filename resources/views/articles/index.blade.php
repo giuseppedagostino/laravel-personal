@@ -37,6 +37,14 @@
             </button>
           </form>
 
+          {{-- TAGS --}}
+          <div class="mt-3">
+            @foreach ($article->tags as $tag)
+              <span class="badge badge-info">{{ $tag->name }}</span>
+            @endforeach
+          </div>
+          {{-- /TAGS --}}
+
         </div>
       </div>
     @endforeach
