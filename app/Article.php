@@ -15,4 +15,10 @@ class Article extends Model
         'content',
         'publication_date'
     ];
+
+    // DB relationships
+    public function tags() {
+        return $this->belongsToMany('App\Tag');
+    }
+
 }

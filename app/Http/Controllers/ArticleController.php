@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Article;
+use App\Tag;
 
 class ArticleController extends Controller
 {
@@ -36,9 +37,11 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Tag $tag)
     {
-        return view('articles.create');
+        // con una query recupero tutti i tag
+        $tags = Tag::all();
+        return view('articles.create', compact('tags'));
     }
 
     /**

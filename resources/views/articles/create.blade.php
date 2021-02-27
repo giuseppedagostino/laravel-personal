@@ -54,6 +54,18 @@
         <label for="publication_date">Data di pubblicazione</label>
         <input type="text" class="form-control" id="publication_date" value="{{ old('publication_date') }}" name="publication_date"  placeholder="Inserisci data di pubblicazione">
       </div>
+
+      <hr>
+      {{-- TAGS --}}
+      <h3 class="mb-3">Tags</h3>
+      <div class="form-group">
+        @foreach ($tags as $tag)
+          <div class="custom-control custom-checkbox d-inline mr-4">
+            <input class="custom-control-input" type="checkbox" id="tag-{{ $tag->id }}">
+            <label class="custom-control-label" for="tag-{{ $tag->id }}">{{ $tag->name }}</label>
+          </div>
+        @endforeach
+      </div>
       
       {{-- SALVA --}}
       <button type="submit" class="btn btn-lg btn-outline-success mt-3">Salva</button>

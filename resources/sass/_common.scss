@@ -12,3 +12,11 @@
   }
 }
 
+a {
+  font-size: 32px;
+  transition: 0.2s;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
