@@ -4,7 +4,7 @@
 <main class="bg-secondary">
 
   @if (session('message'))
-  <div class="alert-success">
+  <div class="alert-success mx-4">
       {{ session('message') }}
   </div>
   @endif  

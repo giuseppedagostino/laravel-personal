@@ -46,13 +46,13 @@
       {{-- CONTENUTO --}}
       <div class="form-group">
         <label for="content">Contenuto</label>
-        <input type="text" class="form-control" id="content" value="{{ old('content') }}" name="content"  placeholder="Inserisci contenuto">
+        <textarea class="form-control" rows="10" name="content" id="body" placeholder="Inserisci contenuto">{{ old('content') }}</textarea>
       </div>
   
       {{-- DATA DI PUBBLICAZIONE --}}
       <div class="form-group">
         <label for="publication_date">Data di pubblicazione</label>
-        <input type="text" class="form-control" id="publication_date" value="{{ old('publication_date') }}" name="publication_date"  placeholder="Inserisci data di pubblicazione">
+        <input type="date" class="form-control" id="publication_date" value="{{ old('publication_date') }}" name="publication_date"  placeholder="Inserisci data di pubblicazione">
       </div>
 
       <hr>
@@ -61,7 +61,8 @@
       <div class="form-group">
         @foreach ($tags as $tag)
           <div class="custom-control custom-checkbox d-inline mr-4">
-            <input class="custom-control-input" type="checkbox" id="tag-{{ $tag->id }}">
+            {{-- nel name inserisco l'array tags, è una cosa di html --}}
+            <input class="custom-control-input" type="checkbox" id="tag-{{ $tag->id }}" name="tags[]" value="{{ $tag->id }}">
             <label class="custom-control-label" for="tag-{{ $tag->id }}">{{ $tag->name }}</label>
           </div>
         @endforeach

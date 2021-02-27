@@ -69,9 +69,18 @@ class ArticleController extends Controller
         $newArticle->content = $data["content"];
         $newArticle->publication_date = $data["publication_date"];
         // salvo il nuovo articolo
-        $postSaveResult = $newArticle->save();
+        $articleSaveResult = $newArticle->save();
 
-        return redirect()->route('articles.index')->with('message', 'Articolo aggiunto correttamente');
+        // questa verifica è necessaria poichè potrei creare un nuovo articolo che però non ha nessuno di questi tag
+        if ($articleSaveResult) {
+            // se l'array tags all'interno di data non è vuoto..
+            if (!empty($data['tags'])) {
+                // tags è con le tonde perchè mi serve recuperare la relazione tra le tabelle, così facendo recupero il metodo tags scritto nel model
+                $newArticle->tags()->attach($data['tags']);
+            }
+        }
+
+        return redirect()->route('articles.index')->with('message', 'Articolo ' . $newArticle->name . ' aggiunto correttamente');
     }
 
     /**
@@ -97,8 +106,8 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        // $articles = Article::all();
-        return view('articles.edit', compact('article'));
+        $tags = Tag::all();
+        return view('articles.edit', compact('article', 'tags'));
     }
 
     /**
@@ -115,7 +124,14 @@ class ArticleController extends Controller
         $request->validate($this->articleValidation);
         $article->update($data);
 
-        return redirect()->route('articles.index')->with('message', 'Articolo aggiornato correttamente');
+        // 'prima stacco tutto e poi faccio l'attach di quello che mi hai passato'
+        if (empty($data['tags'])) {
+            $article->tags()->detach();
+        } else {
+            $article->tags()->sync($data['tags']);
+        }
+
+        return redirect()->route('articles.index')->with('message', 'Articolo ' . $article->name . ' aggiornato correttamente');
     }
 
     /**
