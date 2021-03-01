@@ -16,9 +16,9 @@
         <img class="card-img-top" src="{{ $article->image }}" alt="{{ $article->title }}">
         <div class="card-body">
           <h3 class="card-title">{{ $article->title }}</h3>
-          <h5 class="card-title">{{ $article->subtitle }}</h5>
+          {{-- <h5 class="card-title">{{ substr($article->subtitle, 0, 60) . " ..." }}</h5> --}}
           <p class="card-text">{{ substr($article->content, 0, 60) . " ..." }}</p>
-          <p class="card-text">{{ $article->author }} - {{ $article->publication_date }}</p>
+          {{-- <p class="card-text">{{ $article->author }} - {{ $article->publication_date }}</p> --}}
 
           {{-- SHOW --}}
           <a href="{{ route('articles.show', $article->slug) }}" class="btn btn-outline-primary">Leggi di più</a>

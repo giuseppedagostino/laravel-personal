@@ -46,7 +46,7 @@
       {{-- CONTENUTO --}}
       <div class="form-group">
         <label for="content">Contenuto</label>
-        <input type="text" class="form-control" id="content" value="{{ $article->content }}" name="content">
+        <textarea class="form-control" rows="10" id="content" name="content">{{ $article->content }}</textarea>
       </div>
   
       {{-- DATA DI PUBBLICAZIONE --}}
