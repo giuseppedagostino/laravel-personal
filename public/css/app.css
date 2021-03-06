@@ -14619,14 +14619,41 @@ h3 {
   padding: 0;
 }
 
+body {
+  background-color: #F5E5D5;
+}
+
+img {
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.5);
+}
+
 .card {
   transition: 0.4s;
   border-radius: 20px;
   overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 .card:hover {
-  box-shadow: 0 0 60px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.5);
   transform: scale(1.025);
+}
+
+.message_alert {
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px red;
+  background-color: #F8D7DA;
+}
+
+.message_success {
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px green;
+  background-color: #D4EDDA;
+}
+
+p.mt-4 {
+  font-size: 18px;
 }
 
 .badge {
@@ -14635,8 +14662,4 @@ h3 {
 
 a {
   font-size: 32px;
-  transition: 0.2s;
-}
-a:hover {
-  transform: scale(1.05);
 }

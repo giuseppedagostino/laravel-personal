@@ -1,13 +1,22 @@
 @extends('layouts.layout')
 
 @section('main')
-<main class="bg-secondary">
-
-  @if (session('message'))
-  <div class="alert-success mx-4">
-      {{ session('message') }}
+<header class="bg-dark p-4">
+  <div class="container p-4">
+    {{-- CREATE --}}
+    <a href="{{ route('articles.create') }}" class="btn btn-primary btn-lg btn-block">Crea un nuovo articolo</a>
   </div>
-  @endif  
+</header>
+
+<main>
+
+    @if (session('message'))
+      <div class="container message_success my-4">
+        <div class="alert-success mx-4">
+            {{ session('message') }}
+        </div>
+      </div>  
+    @endif
 
   <div class="d-flex flex-wrap justify-content-center">
     
@@ -48,11 +57,6 @@
         </div>
       </div>
     @endforeach
-  </div>
-
-  <div class="container p-4">
-    {{-- CREATE --}}
-    <a href="{{ route('articles.create') }}" class="btn btn-outline-light btn-lg btn-block">Crea un nuovo articolo</a>
   </div>
 
 </main>

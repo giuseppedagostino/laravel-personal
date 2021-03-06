@@ -3,17 +3,19 @@
 @section('main')
 <main>
 
-  @if ($errors->any())
-  <div class="alert alert-danger">
-    <ul>
-      @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-      @endforeach
-    </ul>
-  </div>
-  @endif
-
   <div class="container my-4">
+
+    @if ($errors->any())
+      <div class="container my-4">
+        <div class="alert message_alert">
+          <ul>
+            @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+        </div>
+      </div>
+    @endif
 
     <form action="{{ route('articles.update', $article->id) }}" method="POST">
       @csrf
@@ -73,10 +75,10 @@
       </div>
       
       {{-- SALVA --}}
-      <button type="submit" class="btn btn-lg btn-outline-success mt-3">Salva</button>
+      <button type="submit" class="btn btn-lg btn-outline-success my-3">Salva</button>
     </form>
 
-    <a href="{{ route('articles.index') }}" class="btn btn-outline-primary">Torna alla home</a>
+    <a href="{{ route('articles.index') }}" class="btn btn-lg btn-outline-primary">Torna alla home</a>
   </div>
 
 </main>
