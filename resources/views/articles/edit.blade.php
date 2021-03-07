@@ -75,7 +75,7 @@
       </div>
       
       {{-- SALVA --}}
-      <button type="submit" class="btn btn-lg btn-outline-success my-3">Salva</button>
+      <button type="submit" class="btn btn-lg btn-success my-3">Salva</button>
     </form>
 
     <a href="{{ route('articles.index') }}" class="btn btn-lg btn-outline-primary">Torna alla home</a>

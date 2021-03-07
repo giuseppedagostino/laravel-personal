@@ -8,10 +8,6 @@ body {
   background-color: #F5E5D5;
 }
 
-img {
-  box-shadow: 0 0 20px 5px rgba(0,0,0, 0.5);
-}
-
 .card {
   transition: 0.4s;
   border-radius: 20px;
@@ -20,6 +16,12 @@ img {
   &:hover{
     box-shadow: 0 0 60px 10px rgba(0,0,0, 0.5);
     transform: scale(1.025);
+  }
+}
+
+div.image_shadow {
+  img {
+    box-shadow: 0 0 20px 5px rgba(0,0,0, 0.5);
   }
 }
 
@@ -43,9 +45,14 @@ p.mt-4 {
 
 .badge {
   padding: 10px;
+  margin-bottom: 10px;
 }
 
 a {
   font-size: 32px;
 }
 
+.btn-footer {
+  border: none;
+  border-radius: 50%;
+}
